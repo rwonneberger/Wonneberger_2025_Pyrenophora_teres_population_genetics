@@ -12,7 +12,7 @@ library(gridExtra)
 
 
 source("https://raw.githubusercontent.com/rwonneberger/R_functions/main/Ronja_functions.R")
-
+setwd("//storage-al.slu.se/home$/rawo0001/My Documents/Projects/Netblotch/Manuscript/Analysis2025")
 
 colors<-c('#4363d8', '#f58231', '#e6194B', '#3cb44b', '#ffe119',  '#42d4f4', '#f032e6', '#fabed4', '#469990', '#dcbeff', '#9A6324', '#fffac8', '#800000', '#aaffc3', '#000075', '#a9a9a9', '#ffffff', '#000000')
 
@@ -166,7 +166,7 @@ class(X)
 pca1 <- dudi.pca(X,scannf=FALSE, center=T, nf=3)
 
 #Plot PCA of Norw netform: by year
-e<-fviz_pca_ind(pca1,  geom="point",  invisible="quali", habillage=Mydata$MT, pointsize=pointsize) +
+e<-fviz_pca_ind(pca1,  geom="point",  invisible="quali", habillage=Mydata$Cultivar, pointsize=pointsize) +
   labs(title="Helium and Tiril")+
   scale_color_manual(values = c('#4363d8', '#f58231', '#e6194B', '#f032e6','#3cb44b', '#ffe119',  '#42d4f4',  '#fabed4', '#469990', '#dcbeff', '#9A6324', '#fffac8', '#800000', '#aaffc3', '#000075', '#a9a9a9', '#ffffff', '#000000'))+
   theme_minimal()+
@@ -257,5 +257,10 @@ g<-fviz_pca_ind(pca1,  geom="point", invisible="quali",habillage=Mydata$year, po
 tiff("Figs/Fig1all.tiff", unit="cm", res=600, width=17.4, height=23.4)
 ggarrange(a, b, c, d, e, f, g, ncol=2, nrow=4, labels=c("a", "b", "c", "d", "e", "f", "g"))
 dev.off()
+
+jpeg("Figs/Fig1all.jpeg", unit="cm", res=600, width=17.4, height=23.4)
+ggarrange(a, b, c, d, e, f, g, ncol=2, nrow=4, labels=c("a", "b", "c", "d", "e", "f", "g"))
+dev.off()
+#######################
 
 
